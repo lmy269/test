@@ -1,0 +1,32 @@
+{
+	"name": "dataflow3",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "adfbenchmark",
+						"type": "LinkedServiceReference"
+					},
+					"schemaLinkedService": {
+						"referenceName": "adfbenchmark",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"script": "source(output(\n\t\tProductId as string,\n\t\tProductName as string,\n\t\tProductShortDescription as string,\n\t\tProductDescription as string,\n\t\tIntroductionDate as string,\n\t\tServingSizeId as short,\n\t\tServingSizeDescription as string,\n\t\tGlobalTradeItemNumber as short,\n\t\tEuropeanArticleNumber as short,\n\t\tUniversalProductCode as short,\n\t\tProductVolume as short,\n\t\tProductVolumeUomId as string,\n\t\tProductNetWeight as short,\n\t\tProductNetWeightUomId as string,\n\t\tProductGrossWeight as short,\n\t\tProductGrossWeightUomId as string,\n\t\tItemSku as string,\n\t\tPrimaryBrandId as string,\n\t\tProductTypeId as string,\n\t\tLastModifiedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tentity: 'Product.cdm.json/Product',\n\tformat: 'cdm',\n\tentityPath: 'product',\n\tmanifestName: 'default',\n\tcorpusPath: 'CorpusGIT',\n\tpartitionPath: 'productoutput',\n\tfolderPath: 'ProductDelta',\n\tfileSystem: 'deltatest3',\n\tcolumnDelimiter: ',',\n\tcolumnNamesAsHeader: true,\n\tcorpusStore: 'adlsgen2',\n\tadlsgen2_fileSystem: 'deltatest',\n\ttruncate: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

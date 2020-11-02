@@ -1,0 +1,32 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "adfbenchmark",
+						"type": "LinkedServiceReference"
+					},
+					"schemaLinkedService": {
+						"referenceName": "adfbenchmark",
+						"type": "LinkedServiceReference"
+					},
+					"name": "ProductDelta"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "csmsink",
+						"type": "DatasetReference"
+					},
+					"name": "DWNewRecords"
+				}
+			],
+			"transformations": [],
+			"script": "source(output(\n\t\tProductId as string,\n\t\tProductName as string,\n\t\tProductShortDescription as string,\n\t\tProductDescription as string,\n\t\tIntroductionDate as timestamp,\n\t\tServingSizeId as integer,\n\t\tServingSizeDescription as string,\n\t\tGlobalTradeItemNumber as decimal(18,2),\n\t\tEuropeanArticleNumber as decimal(18,2),\n\t\tUniversalProductCode as decimal(18,2),\n\t\tProductVolume as decimal(18,2),\n\t\tProductVolumeUomId as string,\n\t\tProductNetWeight as decimal(18,2),\n\t\tProductNetWeightUomId as string,\n\t\tProductGrossWeight as decimal(18,2),\n\t\tProductGrossWeightUomId as string,\n\t\tItemSku as string,\n\t\tPrimaryBrandId as string,\n\t\tProductTypeId as string,\n\t\tLastModifiedDate as timestamp\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tinferDriftedColumnTypes: true,\n\tentity: 'Product.cdm.json/Product',\n\tformat: 'cdm',\n\tmanifestType: 'manifest',\n\tmanifestName: 'default',\n\tentityPath: 'product',\n\tcorpusPath: 'CorpusGIT',\n\tcorpusStore: 'adlsgen2',\n\tadlsgen2_fileSystem: 'deltatest',\n\tfolderPath: 'ProductDelta',\n\tfileSystem: 'deltatest3') ~> ProductDelta\nProductDelta sink(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> DWNewRecords"
+		}
+	}
+}

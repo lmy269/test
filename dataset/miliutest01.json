@@ -1,0 +1,197 @@
+{
+	"name": "miliutest01",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "miliutest01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "all-states-history.csv",
+				"fileSystem": "profilingtest"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "date",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "dataQualityGrade",
+				"type": "String"
+			},
+			{
+				"name": "death",
+				"type": "String"
+			},
+			{
+				"name": "deathConfirmed",
+				"type": "String"
+			},
+			{
+				"name": "deathIncrease",
+				"type": "String"
+			},
+			{
+				"name": "deathProbable",
+				"type": "String"
+			},
+			{
+				"name": "hospitalized",
+				"type": "String"
+			},
+			{
+				"name": "hospitalizedCumulative",
+				"type": "String"
+			},
+			{
+				"name": "hospitalizedCurrently",
+				"type": "String"
+			},
+			{
+				"name": "hospitalizedIncrease",
+				"type": "String"
+			},
+			{
+				"name": "inIcuCumulative",
+				"type": "String"
+			},
+			{
+				"name": "inIcuCurrently",
+				"type": "String"
+			},
+			{
+				"name": "negative",
+				"type": "String"
+			},
+			{
+				"name": "negativeIncrease",
+				"type": "String"
+			},
+			{
+				"name": "negativeTestsAntibody",
+				"type": "String"
+			},
+			{
+				"name": "negativeTestsPeopleAntibody",
+				"type": "String"
+			},
+			{
+				"name": "negativeTestsViral",
+				"type": "String"
+			},
+			{
+				"name": "onVentilatorCumulative",
+				"type": "String"
+			},
+			{
+				"name": "onVentilatorCurrently",
+				"type": "String"
+			},
+			{
+				"name": "pending",
+				"type": "String"
+			},
+			{
+				"name": "positive",
+				"type": "String"
+			},
+			{
+				"name": "positiveCasesViral",
+				"type": "String"
+			},
+			{
+				"name": "positiveIncrease",
+				"type": "String"
+			},
+			{
+				"name": "positiveScore",
+				"type": "String"
+			},
+			{
+				"name": "positiveTestsAntibody",
+				"type": "String"
+			},
+			{
+				"name": "positiveTestsAntigen",
+				"type": "String"
+			},
+			{
+				"name": "positiveTestsPeopleAntibody",
+				"type": "String"
+			},
+			{
+				"name": "positiveTestsPeopleAntigen",
+				"type": "String"
+			},
+			{
+				"name": "positiveTestsViral",
+				"type": "String"
+			},
+			{
+				"name": "recovered",
+				"type": "String"
+			},
+			{
+				"name": "totalTestEncountersViral",
+				"type": "String"
+			},
+			{
+				"name": "totalTestEncountersViralIncrease",
+				"type": "String"
+			},
+			{
+				"name": "totalTestResults",
+				"type": "String"
+			},
+			{
+				"name": "totalTestResultsIncrease",
+				"type": "String"
+			},
+			{
+				"name": "totalTestsAntibody",
+				"type": "String"
+			},
+			{
+				"name": "totalTestsAntigen",
+				"type": "String"
+			},
+			{
+				"name": "totalTestsPeopleAntibody",
+				"type": "String"
+			},
+			{
+				"name": "totalTestsPeopleAntigen",
+				"type": "String"
+			},
+			{
+				"name": "totalTestsPeopleViral",
+				"type": "String"
+			},
+			{
+				"name": "totalTestsPeopleViralIncrease",
+				"type": "String"
+			},
+			{
+				"name": "totalTestsViral",
+				"type": "String"
+			},
+			{
+				"name": "totalTestsViralIncrease",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
